@@ -1,52 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ResumeMatch Pro - AI Resume Analyzer</title>
+  <meta charset="UTF-8" />
+  <title>My Projects Timeline</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Link External CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #0f1020;
+      color: #eaeaf0;
+      padding: 50px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 10px;
+    }
+
+    .timeline {
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      padding-left: 40px;
+    }
+
+    /* vertical line */
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 15px;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #6c63ff, #9b23ea);
+      border-radius: 10px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 60px;
+      padding-left: 40px;
+    }
+
+    /* timeline dot */
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -3px;
+      top: 5px;
+      width: 18px;
+      height: 18px;
+      background: #6c63ff;
+      border-radius: 50%;
+      box-shadow: 0 0 0 6px rgba(108, 99, 255, 0.2);
+    }
+
+    .title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      color: #cfcfe6;
+      line-height: 1.7;
+      font-size: 0.95rem;
+      margin-bottom: 14px;
+    }
+
+    .tags span {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.08);
+      color: #d6d6ff;
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-right: 6px;
+      margin-bottom: 6px;
+    }
+
+    .links {
+      margin-top: 14px;
+    }
+
+    .links a {
+      text-decoration: none;
+      font-size: 0.85rem;
+      color: #6c63ff;
+      margin-right: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .links a i {
+      margin-right: 6px;
+    }
+
+    .links a:hover {
+      color: #9b23ea;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .timeline {
+        padding-left: 30px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-    <div class="container">
-        <h1>ResumeMatch Pro</h1>
-        <p class="subtitle">AI-powered Resume & Job Description Matching Tool</p>
+  <h1>My Projects</h1><br>
+ 
+  <div class="timeline">
 
-        <form method="POST" enctype="multipart/form-data" action="/">
-            <div>
-                <label>Upload Your Resume (PDF or DOCX):</label>
-                <input type="file" name="resume_file" accept=".pdf,.docx" required>
-            </div>
-
-            <div>
-                <label>Paste Job Description:</label>
-                <textarea name="job_description" rows="8" placeholder="Paste the job description here..." required></textarea>
-            </div>
-
-            <button type="submit">Analyze Resume Match</button>
-        </form>
-
-        {% if results %}
-        <div class="results">
-            <h2>Analysis Result</h2>
-
-            <p>Matching Score:</p>
-            <div class="score">{{ results.score }}</div>
-
-            <h3>Skill Gaps & Suggested Improvements:</h3>
-            <div style="white-space: pre-wrap;">
-                {{ results.suggestions }}
-            </div>
-
-            <hr>
-            <p>This analysis was generated using AI.</p>
-        </div>
-        {% endif %}
+    <div class="timeline-item">
+      <div class="title">
+        ResumeMatch Pro
+      </div>
+      <p class="description">
+        An AI-powered web application that analyzes resume and job description
+        compatibility using NLP techniques, generates a matching score, and
+        highlights missing skills.
+      </p>
+      <div class="tags">
+        <span>Python</span>
+        <span>NLP</span>
+        <span>AI</span>
+        <span>Machine Learning</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/Riddhi180605/resume-match">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
     </div>
 
-    <footer>© 2025 ResumeMatch Pro • AI Resume Analyzer</footer>
+    <div class="timeline-item">
+      <div class="title">Trivia Game</div>
+      <p class="description">
+        A web-based trivia quiz game that allows users to answer MCQs,
+        calculates scores in real time, and provides instant feedback.
+      </p>
+      <div class="tags">
+        <span>Python</span>
+        <span>Streamlit</span>
+        <span>APIs</span>
+      </div>
+      <div class="links">
+        <a href="https://trivia-game-kbc.streamlit.app/">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+        </a>
+        <a href="https://github.com/Riddhi180605/trivia-game">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="title">PDF Merger & Splitter</div>
+      <p class="description">
+        A lightweight web application that allows users to merge multiple PDF
+        files or split a PDF into individual documents using a simple interface.
+      </p>
+      <div class="tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Java Script</span>
+      </div>
+      <div class="links">
+        <a href="https://riddhi180605.github.io/pdf-merger-and-splitter/">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+        </a>
+        <a href="https://github.com/Riddhi180605/pdf-merger-and-splitter">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="title">Movie Recommendation System</div>
+      <p class="description">
+        A content-based movie recommendation system built using cosine similarity
+        that suggests similar movies through an interactive Streamlit interface.
+      </p>
+      <div class="tags">
+        <span>Python</span>
+        <span>Machine Learning</span>
+        <span>Streamlit</span>
+      </div>
+      <div class="links">
+        <a href="https://similar-movie-recommendation.streamlit.app/">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+        </a>
+        <a href="https://github.com/Riddhi180605/movie-recommender">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="title">Flappy Bird</div>
+      <p class="description">
+        Built a fully responsive Flappy Bird game using vanilla HTML, CSS, and JavaScript.
+        Features include real-time scoring, restart functionality, keyboard/mouse controls, and dynamic gameplay physics.
+      </p>
+      <div class="tags">
+        <span>HTML</span>
+        <span>CSS</span>
+        <span>Java Script</span>
+      </div>
+      <div class="links">
+        <a href="https://flappy-ball-game.netlify.app/">
+          <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+        </a>
+        <a href="https://github.com/Riddhi180605/flappy-bird-game">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="title">Automobile Brands Analysis Dashboard</div>
+      <p class="description">
+        Designed a Power BI dashboard to analyze automobile brand performance
+        using KPIs such as revenue, market share, and units sold with DAX.
+      </p>
+      <div class="tags">
+        <span>Power BI</span>
+        <span>DAX</span>
+        <span>Data Analytics</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/Riddhi180605/automobile-brand-sales-analysis">
+          <i class="fa-brands fa-github"></i> GitHub
+        </a>
+      </div>
+    </div>
+
+  </div>
 
 </body>
 </html>
